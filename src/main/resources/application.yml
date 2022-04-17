@@ -1,6 +1,20 @@
-zuul:
-  routes:
-    server:
-      path: /server/**
-      url: http://localhost:8081/
+#zuul:
+#  routes:
+#    server: /server/**
+#    serviceId: server
 
+server:  port: 8080
+
+spring:
+  application:
+    name: reverse-proxy
+
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: false  
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    
+  instance:
+    preferIpAddress: true
